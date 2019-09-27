@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import styles from '../../style';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 
-class Sidebar extends Component {
+class DefaultSidebar extends Component {
   constructor(props) {
     super(props);
   }
 
   navigate(route) {
-    this.props.navigation.navigate(route);
+    this.props.navigate.navigate(route);
   }
 
   render() {
@@ -17,16 +18,16 @@ class Sidebar extends Component {
         route: 'Home',
       },
       {
-        title: 'Dashboard',
-        route: 'Dashboard',
+        title: 'Login',
+        route: 'Login',
       },
     ];
 
     return (
       <View style={styles.container}>
         <Image
-          style={{height: 100, width: 100}}
-          source={require('../../../images/appicon.jpg')}
+          style={styles.sidebarlogo}
+          source={require('../../assets/appicon.jpg')}
         />
         {routes.map(e => (
           <TouchableOpacity
@@ -41,16 +42,4 @@ class Sidebar extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-    marginLeft: 10,
-  },
-  link: {
-    padding: 15,
-    borderBottomWidth: 2,
-    borderBottomColor: '#eee',
-  },
-});
-
-export default Sidebar;
+export default DefaultSidebar;
