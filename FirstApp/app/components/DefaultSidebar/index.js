@@ -1,45 +1,39 @@
-import React, {Component} from 'react';
-import styles from '../../style';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {createDrawerNavigator} from 'react-navigation-drawer';
+import Home from '@components/Home';
+import Dashboard from '@components/Dashboard';
+import Page1 from '@components/Page1';
+import Page2 from '@components/Page2';
 
-class DefaultSidebar extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  navigate(route) {
-    this.props.navigate.navigate(route);
-  }
-
-  render() {
-    const routes = [
-      {
-        title: 'Home',
-        route: 'Home',
+const AppDefaultDrawerNav = createDrawerNavigator(
+  {
+    Home: {
+      screen: Home,
+      navigationOptions: {
+        header: null,
       },
-      {
-        title: 'Login',
-        route: 'Login',
+    },
+
+    Dashboard: {
+      screen: Dashboard,
+      navigationOptions: {
+        header: null,
       },
-    ];
+    },
+    Page1: {
+      screen: Page1,
+      navigationOptions: {
+        header: null,
+      },
+    },
+    Page2: {
+      screen: Page2,
+      navigationOptions: {
+        header: null,
+      },
+    },
+  },
+  {initialRouteName: 'Dashboard'},
+  // {contentComponent: DefaultSidebar},
+);
 
-    return (
-      <View style={styles.container}>
-        <Image
-          style={styles.sidebarlogo}
-          source={require('../../assets/appicon.jpg')}
-        />
-        {routes.map(e => (
-          <TouchableOpacity
-            key={e.title}
-            style={styles.link}
-            onPress={_ => this.navigate(e.route)}>
-            <Text key={e.title}>{e.title}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
-    );
-  }
-}
-
-export default DefaultSidebar;
+export default AppDefaultDrawerNav;

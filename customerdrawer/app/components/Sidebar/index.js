@@ -7,6 +7,7 @@ class Sidebar extends Component {
   }
 
   navigate(route) {
+    debugger;
     this.props.navigation.navigate(route);
   }
 
